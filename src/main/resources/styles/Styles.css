@@ -1,0 +1,9 @@
+.button {
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    /*-fx-background-color: linear-gradient(#dc9656,#ab4642);*/
+}
+
+.scrollPane{
+    -fx-fit-to-width: true;
+}

@@ -1,0 +1,7 @@
+com/mycompany/alvat_application/FXMLController.class
+com/mycompany/alvat_application/testing/MessageElement.class
+com/mycompany/alvat_application/testing/IPMessageElement.class
+com/mycompany/alvat_application/testing/StringMessageElement.class
+com/mycompany/alvat_application/testing/NumberMessageElement.class
+com/mycompany/alvat_application/MainApp.class
+com/mycompany/alvat_application/testing/ProcessIncommingMessage.class
