@@ -1,7 +1,13 @@
 package com.mycompany.alvat_application.controllers;
 
+import com.mycompany.alvat_application.model.IPMessageElement;
+import com.mycompany.alvat_application.model.MessageElement;
+import com.mycompany.alvat_application.model.NumberMessageElement;
+import static com.mycompany.alvat_application.model.ProcessIncommingMessage.processIncommingMessage;
+import com.mycompany.alvat_application.model.StringMessageElement;
 import com.mycompany.alvat_application.view.Dialog;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 
 public class MainController implements Initializable {
 
@@ -26,34 +33,27 @@ public class MainController implements Initializable {
     @FXML
     private ScrollPane scrollPaneRight;
 
-    private GridPane gridPaneLeft;
+    private GridPane gridPaneLeft; //contains 
     private GridPane gridPaneRight;
+    private ArrayList<TextField> gridPaneRightTextFields;
+
+    private ArrayList<MessageElement> readOnlyElements;
+    private ArrayList<MessageElement> rwElements;
 
     GridPane grid2 = new GridPane();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
     @FXML
     private void callMyButton(ActionEvent event) {
-        System.out.println("Bla");
-        myButton.setText("Button");
-
-        /*Button b1 = new Button("ButtonI1");
-
-        for (int i = 0; i < 30; i++) {
-            grid2.add(new Button("butonxy"), 0, i);
-        }
-        scrollPaneLeft.setContent(grid2);*/
         generateBubleGum();
-
     }
 
     public void generateBubleGum() {
 
-        Label l1 = new Label("Nazev zarizeni");
+        /*Label l1 = new Label("Nazev zarizeni");
         Label l2 = new Label("Hula hop generator");
 
         Label l3 = new Label("Prikon");
@@ -80,13 +80,141 @@ public class MainController implements Initializable {
         gridPaneRight.add(tf, 1, 0);
         gridPaneRight.add(tf2, 1, 1);
 
-        scrollPaneRight.setContent(gridPaneRight);
+        scrollPaneRight.setContent(gridPaneRight);*/
+        IPMessageElement m1 = new IPMessageElement("IP_ADRESS", "IP", "192.168.0.101", "IP ADRESSA", "R", "RW");
+        NumberMessageElement m2 = new NumberMessageElement("ITEM_ID", "ID", "1", "ID zařízení", "L", "RW", 0.0, 0.0);
+        StringMessageElement m3 = new StringMessageElement("CON_TYPE", "CT", "Ethernet", "Druh připojení", "L", "R", 0, 20);
+
+        JSONArray incommingMessage = new JSONArray();
+        incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m2.parseToJSON());
+        incommingMessage.put(m3.parseToJSON());
+
+       
+        System.out.println(incommingMessage);
+
+        MessageElement incommingData[];
+        incommingData = processIncommingMessage(incommingMessage);
+        updateView(incommingData);
 
     }
 
-    
-    
-    
+    /**
+     * Updates view based on incoming data, aka updates both panes.
+     * Read only elements will be placed to the left pane.
+     * RW and W elements will be placed to the right pane.
+     * @param data 
+     */
+    public void updateView(MessageElement[] data) {
+
+        if (data.length > 0) {
+
+            readOnlyElements = new ArrayList<>();
+            rwElements = new ArrayList<>();
+            gridPaneLeft = new GridPane();
+            gridPaneRight = new GridPane();
+            gridPaneRightTextFields = new ArrayList();
+
+            Label l1, l2;
+            TextField tf;
+
+            for (MessageElement m : data) {
+
+                if ("R".equals(m.getRW())) {
+                    readOnlyElements.add(m);
+
+                    l1 = new Label(m.getLabel());
+                    l2 = new Label(m.getValue());
+
+                    gridPaneLeft.add(l1, 0, readOnlyElements.indexOf(m));
+                    gridPaneLeft.add(l2, 1, readOnlyElements.indexOf(m));
+
+                } else {
+                    rwElements.add(m);
+
+                    l1 = new Label(m.getLabel());
+                    tf = new TextField();
+                    tf.setText(m.getValue());
+                    gridPaneRightTextFields.add(tf);
+
+                    gridPaneRight.add(l1, 0, rwElements.indexOf(m));
+                    gridPaneRight.add(tf, 1, rwElements.indexOf(m));
+                }
+            }
+
+            gridPaneLeft.setVgap(8);
+            gridPaneLeft.setHgap(12);
+            gridPaneRight.setVgap(8);
+            gridPaneRight.setHgap(12);
+
+            scrollPaneLeft.setContent(gridPaneLeft);
+            scrollPaneRight.setContent(gridPaneRight);
+        }
+    }
+
     /**
      * Exit program event from close button. When user click to the exit button,
      * question dialog is shown, if user is sure to close the application.
