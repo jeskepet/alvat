@@ -1,7 +1,8 @@
-/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/testing/StringMessageElement.java
-/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/testing/ProcessIncommingMessage.java
+/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/model/ProcessIncommingMessage.java
+/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/view/Dialog.java
 /home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/MainApp.java
-/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/testing/MessageElement.java
-/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/FXMLController.java
-/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/testing/NumberMessageElement.java
-/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/testing/IPMessageElement.java
+/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/controllers/MainController.java
+/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/model/NumberMessageElement.java
+/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/model/MessageElement.java
+/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/model/StringMessageElement.java
+/home/light/NetBeansProjects/alvat_application/src/main/java/com/mycompany/alvat_application/model/IPMessageElement.java

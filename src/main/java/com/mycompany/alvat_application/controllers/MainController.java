@@ -1,26 +1,28 @@
-package com.mycompany.alvat_application;
+package com.mycompany.alvat_application.controllers;
 
+import com.mycompany.alvat_application.view.Dialog;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
-public class FXMLController implements Initializable {
+public class MainController implements Initializable {
 
     @FXML
     private Button myButton;
 
     @FXML
     private ScrollPane scrollPaneLeft;
-    
+
     @FXML
     private ScrollPane scrollPaneRight;
 
@@ -81,4 +83,48 @@ public class FXMLController implements Initializable {
         scrollPaneRight.setContent(gridPaneRight);
 
     }
+
+    
+    
+    
+    /**
+     * Exit program event from close button. When user click to the exit button,
+     * question dialog is shown, if user is sure to close the application.
+     *
+     * @param stage Stage
+     */
+    public void exitProgram(Stage stage) {
+        boolean b = new Dialog().question("Ukončení programu", "Opravdu si přejete ukončit program?", getStagePosition());
+        if (b) {
+            //communicator.disconnect();
+            stage.close();
+        }
+    }
+
+    /**
+     * Get x, y, width and height of primary stage and width and height of
+     * screen
+     *
+     * @return double[] array: x, y, width and height of primary stage, width
+     * and height of screen
+     */
+    private double[] getStagePosition() {
+        try {
+            Stage stage = (Stage) myButton.getScene().getWindow();
+            double x = stage.getX();
+            double y = stage.getY();
+            double w = stage.getWidth();
+            double h = stage.getHeight();
+
+            Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+            double mw = visualBounds.getWidth();
+            double mh = visualBounds.getHeight();
+
+            return new double[]{x, y, w, h, mw, mh};
+        } catch (NullPointerException e) {
+            return new double[]{0, 0, 0, 0, 0, 0};
+        }
+
+    }
+
 }
