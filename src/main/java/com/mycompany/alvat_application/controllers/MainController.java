@@ -9,12 +9,15 @@ import com.mycompany.alvat_application.view.Dialog;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -40,8 +43,11 @@ public class MainController implements Initializable {
     private ArrayList<MessageElement> readOnlyElements;
     private ArrayList<MessageElement> rwElements;
 
-    GridPane grid2 = new GridPane();
+    @FXML
+    private ListView myListView;
 
+    private static final ObservableList<String> logs = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
@@ -51,36 +57,22 @@ public class MainController implements Initializable {
         generateBubleGum();
     }
 
+    @FXML
+    private void handleButtonClick(ActionEvent event) {
+        Button o = (Button) event.getSource();
+        String name = o.getId();
+        //System.out.println(name + " clicked!");
+        logs.add(name + " clicked!");
+        myListView.setItems(logs);
+    }
+
+    @FXML
+    private void handleToggleButton(ActionEvent event) {
+       generateBubleGum();
+    }
+
     public void generateBubleGum() {
 
-        /*Label l1 = new Label("Nazev zarizeni");
-        Label l2 = new Label("Hula hop generator");
-
-        Label l3 = new Label("Prikon");
-        Label l4 = new Label("300 MW");
-
-        Label l5 = new Label("IP");
-        Label l6 = new Label("Brana");
-
-        TextField tf = new TextField();
-        TextField tf2 = new TextField();
-
-        gridPaneLeft = new GridPane();
-        gridPaneRight = new GridPane();
-
-        gridPaneLeft.add(l1, 0, 0);
-        gridPaneLeft.add(l2, 0, 1);
-        gridPaneLeft.add(l3, 1, 0);
-        gridPaneLeft.add(l4, 1, 1);
-
-        scrollPaneLeft.setContent(gridPaneLeft);
-
-        gridPaneRight.add(l5, 0, 0);
-        gridPaneRight.add(l6, 0, 1);
-        gridPaneRight.add(tf, 1, 0);
-        gridPaneRight.add(tf2, 1, 1);
-
-        scrollPaneRight.setContent(gridPaneRight);*/
         IPMessageElement m1 = new IPMessageElement("IP_ADRESS", "IP", "192.168.0.101", "IP ADRESSA", "R", "RW");
         NumberMessageElement m2 = new NumberMessageElement("ITEM_ID", "ID", "1", "ID zařízení", "L", "RW", 0.0, 0.0);
         StringMessageElement m3 = new StringMessageElement("CON_TYPE", "CT", "Ethernet", "Druh připojení", "L", "R", 0, 20);
@@ -89,71 +81,70 @@ public class MainController implements Initializable {
         incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-                incommingMessage.put(m1.parseToJSON());
+        incommingMessage.put(m1.parseToJSON());
         incommingMessage.put(m2.parseToJSON());
         incommingMessage.put(m3.parseToJSON());
 
-       
         System.out.println(incommingMessage);
 
         MessageElement incommingData[];
@@ -163,10 +154,11 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Updates view based on incoming data, aka updates both panes.
-     * Read only elements will be placed to the left pane.
-     * RW and W elements will be placed to the right pane.
-     * @param data 
+     * Updates view based on incoming data, aka updates both panes. Read only
+     * elements will be placed to the left pane. RW and W elements will be
+     * placed to the right pane.
+     *
+     * @param data
      */
     public void updateView(MessageElement[] data) {
 

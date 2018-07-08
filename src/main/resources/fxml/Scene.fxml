@@ -11,6 +11,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -77,16 +79,16 @@
                               </Label>
                               <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" />
                               <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <Button fx:id="myButton2" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Button fx:id="buttonOne" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="1" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button fx:id="myButton" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#callMyButton" prefHeight="32.0" prefWidth="32.0" GridPane.columnIndex="2">
+                              <ToggleButton fx:id="buttonTwo" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleToggleButton" prefHeight="32.0" prefWidth="32.0" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
-                              </Button>
+                              </ToggleButton>
                            </children>
                         </GridPane>
                      </children>
@@ -124,31 +126,48 @@
                <children>
                   <ButtonBar buttonMinWidth="15.0" layoutX="14.0" layoutY="3.0" prefWidth="288.0" AnchorPane.leftAnchor="8.0">
                     <buttons>
-                        <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" ButtonBar.buttonData="LEFT" />
-                        <Button layoutX="125.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" ButtonBar.buttonData="LEFT" />
-                        <Button layoutX="125.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" ButtonBar.buttonData="LEFT">
+                        <Button fx:id="buttonThree" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="3" ButtonBar.buttonData="LEFT" />
+                        <Button fx:id="buttonFour" layoutX="125.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="4" ButtonBar.buttonData="LEFT" />
+                        <Button fx:id="buttonFive" layoutX="125.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="5" ButtonBar.buttonData="LEFT">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></Button>
-                        <Button layoutX="220.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" ButtonBar.buttonData="LEFT" />
-                        <Button layoutX="315.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" ButtonBar.buttonData="LEFT" />
-                        <Button layoutX="315.0" layoutY="14.0" maxHeight="32.0" maxWidth="48.0" minWidth="0.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" ButtonBar.buttonData="LEFT" />
-                        <Button layoutX="89.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" ButtonBar.buttonData="LEFT" />
+                        <Button fx:id="buttonSix" layoutX="220.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="6" ButtonBar.buttonData="LEFT" />
+                        <Button fx:id="buttonSeven" layoutX="315.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="7" ButtonBar.buttonData="LEFT" />
+                        <Button fx:id="buttonEight" layoutX="315.0" layoutY="14.0" maxHeight="32.0" maxWidth="48.0" minWidth="0.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="8" ButtonBar.buttonData="LEFT" />
+                        <Button fx:id="buttonNine" layoutX="89.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="9" ButtonBar.buttonData="LEFT" />
                     </buttons>
                      <VBox.margin>
                         <Insets left="8.0" />
                      </VBox.margin>
                   </ButtonBar>
+                  <ButtonBar buttonMinWidth="15.0" layoutX="786.0" layoutY="-2.0" prefHeight="40.0" prefWidth="136.0" AnchorPane.rightAnchor="10.0">
+                    <buttons>
+                        <Button fx:id="buttonTen" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="10" />
+                        <Button fx:id="buttonEleven" layoutX="178.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="11" />
+                        <Button fx:id="buttonTwelve" layoutX="178.0" layoutY="14.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="12" />
+                    </buttons>
+                  </ButtonBar>
+                  <TextField layoutX="668.0" layoutY="3.0" prefHeight="31.0" prefWidth="191.0" AnchorPane.rightAnchor="130.0">
+                     <padding>
+                        <Insets left="100.0" />
+                     </padding>
+                  </TextField>
+                  <Region layoutX="296.0" layoutY="2.0" prefHeight="32.0" prefWidth="364.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Region>
                </children>
             </AnchorPane>
             <AnchorPane>
                <children>
-                  <ListView AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <ListView fx:id="myListView" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="80.0" prefWidth="1000.0">
                <children>
-                  <Button layoutX="939.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <Button fx:id="buttonThirteen" layoutX="939.0" maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="32.0" prefWidth="32.0" text="13" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                </children>
             </AnchorPane>
          </children>

@@ -4,6 +4,10 @@
     /*-fx-background-color: linear-gradient(#dc9656,#ab4642);*/
 }
 
+.label{
+     -fx-font-weight: bold;
+}
+
 .scrollPane{
     -fx-fit-to-width: true;
 }
